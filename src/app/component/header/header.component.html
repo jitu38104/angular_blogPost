@@ -1,0 +1,45 @@
+<div class="head-container py-2">
+    <div class="nav-head d-flex justify-content-between align-items-center mx-auto w-75">
+        <div class="hero-img w-100">
+            <img routerLink="/" src="assets/hero.png" alt="" />
+        </div>
+    
+        <div class="side-menu" *ngIf="sideMenu">
+            <div class="user-icon d-flex align-items-center">
+                <span class="me-3">{{userData.first_name}} {{userData.last_name}}</span>
+                <div class="avatar position-relative" tabindex="1" (focusout)="menuBoxVisible=false" (click)="menuBoxVisible=!menuBoxVisible">
+                    <span>{{usernamePrefix}}</span>
+
+                    <div class="menu-box position-absolute" *ngIf="menuBoxVisible">
+                        <div class="option" (click)="redirectTo('editor')">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Add New Blog</span>
+                        </div>
+
+                        <div class="option" (click)="redirectTo('blogs')">
+                            <i class="fa-solid fa-list-ul"></i>
+                            <span>View My Blogs</span>
+                        </div>
+
+                        <div class="option" (click)="redirectTo('bookmarks')">
+                            <i class="fa-solid fa-bookmark"></i>
+                            <span>My Favourites</span>
+                        </div>
+
+                        <div class="option" (click)="redirectTo('profile')">
+                            <i class="fa-solid fa-user"></i>
+                            <span>My Profile</span>
+                        </div>
+
+                        <div class="option" (click)="logout();menuBoxVisible=false">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <span>Logout</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

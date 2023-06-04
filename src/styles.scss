@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("../node_modules/alertifyjs/build/css/alertify.css");
+@import url("../node_modules/alertifyjs/build/css/themes/bootstrap.min.css");
+@import url("../node_modules/alertifyjs//build/css/themes/default.min.css");
+
+
+*{
+    font-family: 'Lato', sans-serif;
+}
+
+
+ckeditor div.ck-editor div.ck-editor__main div.ck-content.ck-editor__editable{
+    height: 55vh;
+    overflow: auto;
+}
+

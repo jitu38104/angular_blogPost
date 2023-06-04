@@ -1,0 +1,50 @@
+<div class="editor-container">
+    <div class="editor-form">
+        <h2>Create Blog</h2>
+
+        <div class="input-fields">
+            <div class="input-box">
+                <span class="important">Blog Title</span>
+                <input type="text" [(ngModel)]="blogDataObj.blogTitle" />
+            </div>
+            <p class="error-msg" [ngStyle]="{'visibility': errorFlags[0] ? 'visible' : 'hidden'}">*Blog title is required!</p>
+
+            <div class="input-box">
+                <span class="important">Blog Sub Heading</span>
+                <input type="text" [(ngModel)]="blogDataObj.blogSubHead" />
+            </div>
+            <p class="error-msg" [ngStyle]="{'visibility': errorFlags[1] ? 'visible' : 'hidden'}">*Blog sub title is required!</p>
+
+            <div class="input-box">
+                <span class="important">Category</span>
+                <div class="selection text-end">
+                    <select [(ngModel)]="blogDataObj.category">
+                        <option value="">--Select Category--</option>
+                        <option *ngFor="let item of categoryArr;" value="{{item?.catId}}">{{item?.category | titlecase}}</option>
+                    </select>
+                </div>
+            </div>
+            <p class="error-msg" [ngStyle]="{'visibility': errorFlags[2] ? 'visible' : 'hidden'}">*Blog category is required!</p>
+
+            <div class="input-image d-flex align-items-end">
+                <input type="file" accept="image/*" (change)="onSelectImage($event)" #blogImag />
+                <button (click)="onClickSelectImage()" class="btn btn-primary">Select Blog Image</button>
+                <div class="image-preview">
+                    <img [src]="prevImg" alt="" />
+                </div>
+            </div>
+            <p class="error-msg" [ngStyle]="{'visibility': errorFlags[3] ? 'visible' : 'hidden'}">*Blog image is required!</p>
+
+            <div class="input-area">
+                <div class="label important">Blog Body</div>
+                <div class="editor-box">
+                    <ckeditor [editor]="editor" [config]="editorConfig" [(ngModel)]="blogDataObj.blogBody"></ckeditor>
+                </div>
+            </div>
+            <p class="error-msg" [ngStyle]="{'visibility': errorFlags[4] ? 'visible' : 'hidden'}">*Blog content is required!</p>
+
+            <div class="submit"><button (click)="onSubmitBlog()" class="btn btn-danger">Submit</button></div>
+        </div>
+    </div>
+</div>  
+

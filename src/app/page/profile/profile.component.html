@@ -1,0 +1,77 @@
+<div class="profile-container">
+    <div class="box">
+        <div class="profile-img">
+            <img src="assets/user.png" alt="">
+        </div>
+    
+        <div class="details position-relative">
+            <div *ngIf="!isResetPassForm">
+                <div class="user-info">
+                    <span><i class="fa-solid fa-user"></i></span>
+                    <span class="info-box" *ngIf="!isUsernameReset">
+                        <span>{{firstName}} {{lastName}}</span>
+                        <span title="Edit name" (click)="isUsernameReset=true"><i class="fa-solid fa-pen-to-square"></i></span>
+                    </span>
+
+                    <span class="update-box" *ngIf="isUsernameReset">
+                        <input type="text" [(ngModel)]="fullName" />
+                        <button class="btn btn-danger" (click)="updateUserDetail('name')">Update</button>
+                        <button class="btn btn-success" (click)="isUsernameReset=false">Close</button>
+                    </span>
+                </div>
+        
+                <div class="user-info">
+                    <span><i class="fa-sharp fa-solid fa-envelope"></i></span>
+                    <span class="info-box"><span>{{userEmail}}</span></span>
+                </div>
+        
+                <div class="user-info">
+                    <span><i class="fa-solid fa-globe"></i></span>
+                    <span class="info-box" *ngIf="!isCountryReset">
+                        <span>{{country}}</span>
+                        <span title="Edit location" (click)="isCountryReset=true"><i class="fa-solid fa-pen-to-square"></i></span>
+                    </span>
+
+                    <span class="update-box" *ngIf="isCountryReset">
+                        <select [(ngModel)]="country">
+                            <option value="">--Select Country--</option>
+                            <option value="{{item?.name}}" *ngFor="let item of allCountries;">{{item?.name}}</option>
+                        </select>
+                        <button class="btn btn-danger" (click)="updateUserDetail('country')">Update</button>
+                        <button class="btn btn-success" (click)="isCountryReset=false">Close</button>
+                    </span>
+                </div>
+        
+                <div class="user-info">
+                    <span><i class="fa-solid fa-lock"></i></span>
+                    <span class="info-box">
+                        <span class="password">
+                            <i class="fa-solid fa-circle me-1" *ngFor="let item of [1,2,3,4,5,6,7,8,9,0];"></i>
+                        </span>
+                        <span title="Reset password" (click)="isResetPassForm=true"><i class="fa-solid fa-pen-to-square"></i></span>
+                    </span>
+                </div>
+            </div>
+
+            <div *ngIf="isResetPassForm">
+                <div class="user-info">
+                    <span><i class="fa-solid fa-lock"></i></span>
+                    <input class="exception" type="text" [(ngModel)]="password.old" placeholder="Old Password" />
+                </div>
+                <div class="user-info">
+                    <span><i class="fa-solid fa-lock"></i></span>
+                    <input class="exception" type="password" [(ngModel)]="password.new" placeholder="New Password" />
+                </div>
+                <div class="user-info">
+                    <span><i class="fa-solid fa-lock"></i></span>
+                    <input class="exception" type="password" [(ngModel)]="password.repeat" placeholder="Repeat Password" />
+                </div>
+
+                <div class="update-btn mx-auto">
+                    <button class="btn btn-danger" (click)="updateUserPassword()">Update</button>
+                    <button class="btn btn-success" (click)="isResetPassForm=false">Close</button>                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

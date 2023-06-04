@@ -1,0 +1,86 @@
+<div class="blog-list-container w-100">
+    <div class="table-header w-100">
+        <div class="heading text-center mb-3">{{currentListType=='blogs' ? 'My All Blogs' : 'My Favourites'}}</div>
+        <div class="filters"></div>
+    </div>
+    <div class="table-box w-100" *ngIf="currentListType=='blogs'">
+        <table class="w-100">
+            <thead>
+                <th>S.no</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Enable/Disable</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let item of allUserArr; let i=index;">
+                    <td>{{i+1}}</td>
+                    <td>{{item?.title}}</td>
+                    <td>{{item?.username}}</td>
+                    <td>{{item?.categoryName}}</td>
+                    <td>{{item?.transaction_date | date:'dd/MM/yyyy h:mm:ss a'}}</td>
+                    <td>
+                        <div class="toggle-switch d-flex justify-content-center">
+                            <input [checked]="item?.active" class="tgl tgl-flat" id="toggle-{{i}}" type="checkbox" (change)="toggleBlogVisibility($event, item?.blog_id)" />
+                            <label class="tgl-btn" for="toggle-{{i}}"></label>
+                        </div>
+                    </td>
+                    <td><i (click)="redirectToEdit(item)" class="fa-solid fa-pen-to-square"></i></td>
+                    <td>
+                        <div tabindex="1" class="delete-option position-relative">
+                            <i class="fa-solid fa-trash"></i>
+                            <div class="confirmation position-absolute">
+                                <div tabindex="1" id="option-{{i}}"></div>
+                                <p>Are you confirm?</p>
+                                <div class="btns">
+                                    <span class="btn btn-danger" (click)="deleteData('blogs', 'option-'+i, item?.blog_id)">Delete</span>
+                                    <span class="btn btn-success" (click)="deleteData('cancel', 'option-'+i)">Cancel</span>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-box w-100" *ngIf="currentListType=='bookmarks'">
+        <table class="w-100">
+            <thead>
+                <th>S.no</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Delete</th>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let item of allUserArr; let i=index;">
+                    <td>{{i+1}}</td>
+                    <td class="clickable" (click)="gotoStoryPage(item?.blog_id)">{{item?.title}}</td>
+                    <td>{{item?.username}}</td>
+                    <td>{{item?.categoryName}}</td>
+                    <td>{{item?.transaction_date | date:'dd/MM/yyyy h:mm:ss a'}}</td>
+                    <td>
+                        <div tabindex="1" class="delete-option position-relative">
+                            <i class="fa-solid fa-trash"></i>
+                            <div class="confirmation position-absolute">
+                                <div tabindex="1" id="option-{{i}}"></div>
+                                <p>Are you confirm?</p>
+                                <div class="btns">
+                                    <span class="btn btn-danger" (click)="deleteData('bookmark', 'option-'+i, item?.blog_id)">Delete</span>
+                                    <span class="btn btn-success" (click)="deleteData('cancel', 'option-'+i)">Cancel</span>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

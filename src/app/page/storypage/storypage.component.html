@@ -1,0 +1,43 @@
+<div class="story-container d-flex py-5">
+    <section class="blank"></section>
+
+    <section class="left">
+        <div class="blog-user-details px-3 mb-3 d-flex align-items-center justify-content-between w-100">
+            <div class="left-info d-flex align-items-center">
+                <div class="avatar"><img src="assets/user.png" alt=""></div>
+                <div class="data">
+                    <div class="name">{{currentBlogData?.username}}</div>
+                    <div class="datetime">
+                        <span class="date">{{currentBlogData?.transaction_date | date:'MMM d, y'}}</span>
+                        <span class="time">{{currentBlogData?.transaction_date | date:'h:mm:ss a'}}</span>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="right">
+                <i (click)="toggleBookmarkSave(currentBlogData)" class="fa-{{isBookmarked?'solid':'regular'}} fa-bookmark"></i>
+            </div>
+        </div>
+    
+        <div class="blog-image w-100 mb-4">
+            <img class="h-100 w-100" [src]="imageUrl+currentBlogData?.blog_image" alt="" />
+        </div>
+    
+        <div class="blog-title">{{currentBlogData?.title}}</div>
+        <div class="horizontal-bar mb-3"></div>
+    
+        <div class="blog-body" [innerHTML]="currentBlogData?.content"></div>
+    </section>
+
+    <section class="right px-3 position-relative">
+        <!-- <div class="more-blogs">More blogs</div> -->
+        <div class="blog-list position-sticky">
+            <div class="blog d-flex" *ngFor="let item of moreOtherBlogs" (click)="changeBlogState(item)">
+                <div class="image">
+                    <img class="h-100 w-100" src="{{imageUrl + item?.blog_image}}" alt="" />
+                </div>
+                <div class="title">{{item?.title}}</div>
+            </div>
+        </div>
+    </section>
+</div>

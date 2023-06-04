@@ -1,0 +1,156 @@
+div.editor-container{
+    div.editor-form{
+        width: 60%;
+        margin: auto;
+        margin-top: 1rem;
+        margin-bottom: 10rem;
+
+        h2{
+            text-align: center;
+            letter-spacing: 0.5px;
+            font-weight: 800;
+            margin-bottom: 2rem;
+        }
+
+        div.input-fields{
+            padding: 2.5rem 3rem;
+            border: 1px solid #c2c2c2;
+            box-shadow: 3px 3px 15px 1px #00000063;
+
+            p.error-msg {
+                margin-bottom: 1rem;
+                font-size: 12.5px;
+                letter-spacing: 0.5px;
+                color: red;
+                margin-top: 5px;
+            }
+
+            div.input-box{
+                display: flex;
+                align-items: center;
+
+                span{
+                    font-size: 16.5px;
+                    font-weight: 600;
+                    letter-spacing: 0.5px;
+                    width: 40%;
+                }
+                input{
+                    width: 80%;
+                    padding: 2px 15px;
+                    font-size: 15.5px;
+                    outline: none;
+                    border: 1px solid #c2c2c2;
+                }
+                div.selection{
+                    width: 80%;
+                    select{
+                        width: 50%;
+                        padding: 5px 15px;
+                        border: 1px solid #c2c2c2;
+                        outline: none;
+                    }
+                }
+            }
+
+            div.input-image{
+                input{display: none;}
+                button{
+                    border-radius: 5px;
+                    padding: 7px 10px;
+                    font-size: 15px;
+                    letter-spacing: 0.5px;
+                    margin-right: 7.5%;
+                }
+
+                div.image-preview{
+                    width: 70%;
+                    height: 200px;
+                    img{
+                        height: 100%;
+                        width: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+
+            div.input-area{
+                div.label{
+                    font-size: 16.5 px;
+                    font-weight: 600;
+                    letter-spacing: 0.5px;
+                    margin-bottom: 0.5rem;
+                }
+                div.editor-box{
+                    div.format-tools{
+                        button{
+                            cursor: pointer;
+                            padding: 2px 7px;
+                            margin-right: 10px;
+                            border: 1px solid #c2c2c2;
+                            background-color: #f1f3f4;
+
+                            &:hover{background-color: #d5d8d9;}
+                            &:active{background-color: #f1f3f4;}
+
+                            &:last-child{padding: 2px 0;}
+
+                            select {
+                                background-color: transparent;
+                                font-size: 12px;
+                                border: none;
+                                outline: none;
+                                padding: 0;
+
+                                option{
+                                    font-size: 12px;
+                                    margin-bottom: 10px;
+                                }
+                            }
+
+                            i{font-size: 10px;}
+                        }
+                    }
+                    div.textArea{
+                        border: 1px solid #c2c2c2;
+                        background-color: white;
+                        outline: none;
+                        height: 20rem;
+                        font-size: 17px;
+                        padding: 10px 15px;
+                        overflow: auto;
+    
+                        &::-webkit-scrollbar {width: 8px;}
+                           
+                        &::-webkit-scrollbar-track {
+                            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+                        }
+                        
+                        &::-webkit-scrollbar-thumb {
+                            background-color: darkgrey;
+                            outline: 1px solid slategrey;
+                            border-radius: 30px;
+                        }
+                    }
+                }
+            }
+
+            div.submit{
+                text-align: center;
+                
+                button{
+                    border-radius: 5px;
+                    width: 50%;
+                    font-size: 15.5px;
+                    letter-spacing: 0.6px;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}
+
+.important::after{
+    content: "*";
+    color: red;
+}

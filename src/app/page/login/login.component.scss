@@ -1,0 +1,74 @@
+div.login-container{
+    div.registration{
+
+    }
+
+    div.login{
+        
+    }
+
+    div.registration,
+    div.login{
+        padding: 15px 40px 40px;
+        width: 30%;
+        border: 1px solid #838383;
+        border-radius: 30px;
+        transition: all 0.3s ease-in-out;
+
+        &:hover{
+            box-shadow: 0px 4px 12px 0px #000000a1;
+            border: none;
+        }
+
+        h2{
+            text-align: center;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        div.submit button{
+            border-radius: 0;
+            width: 40%;
+            padding: 3px 0;
+            font-size: 15px;
+            letter-spacing: 0.8px;
+            background-color: black;
+            border-color: black;
+
+            &:hover{
+                background-color: white;
+                color: black;
+            }
+        }
+
+        div.form-box{
+            div.input-field{
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                margin-bottom: 0.65rem;
+
+                span{
+                    font-size: 14px;
+                    letter-spacing: 0.6px;
+                    margin-bottom: 5px;
+                }
+                input,
+                select{
+                    outline: none;
+                    width: 100%;
+                    font-size: 14px;
+                    padding: 3px 10px;
+                    border: 1px solid #c2c2c2;
+                }
+                p.error{
+                    color: red;
+                    margin: 0;
+                    font-size: 12px;
+                    letter-spacing: 0.5px;
+                }
+            }
+        }
+    }
+}

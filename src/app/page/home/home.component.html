@@ -1,0 +1,22 @@
+<div class="container pt-4">
+    <div class="blog-container mx-auto overflow-hidden" *ngFor="let item of allBlogsArr;">
+        <div class="blog h-100 p-3 position-relative">
+            <div class="blog-hero w-100 overflow-hidden position-relative">
+                <img class="post h-100 w-100" [src]="imgPath+item?.blog_image" alt="" />
+                
+                <div class="options position-absolute d-flex justify-content-evenly">
+                    <div class="like"><i class="fa-sharp fa-solid fa-thumbs-up"></i></div>
+                    <div class="fav"><i class="fa-solid fa-bookmark"></i></div>
+                </div>
+            </div>
+
+            <div class="detail w-100 position-absolute px-3">
+                <div class="blog-content">
+                    <h4>{{item?.title}}</h4>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. At molestiae id aspernatur nam praesentium hic saepe ipsum nostrum odit, eveniet pariatur blanditiis inventore expedita unde eum, libero ratione sed esse.</p>
+                </div>
+                <div class="see-more" routerLink="/blog/{{item?.blog_id}}">See More</div>
+            </div>
+        </div>
+    </div>
+</div>

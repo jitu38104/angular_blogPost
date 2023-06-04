@@ -1,0 +1,67 @@
+<div class="login-container my-4 d-flex justify-content-evenly">
+    <div class="registration">
+        <h2>SIGN UP</h2>
+
+        <div class="form-box">
+            <div class="input-field">
+                <span>First Name</span>
+                <input type="text" [(ngModel)]="registerObj.first_name" id="" />
+                <p class="error" *ngIf="errorFlags.register[0]">First name field is required</p>
+            </div>
+
+            <div class="input-field">
+                <span>Last Name</span>
+                <input type="text" id="" [(ngModel)]="registerObj.last_name" />
+                <p class="error" *ngIf="errorFlags.register[1]">Last name field is required</p>
+            </div>
+
+            <div class="input-field">
+                <span>Email</span>
+                <input type="email" id="" [(ngModel)]="registerObj.email" />
+                <p class="error" *ngIf="errorFlags.register[2]">{{errorMsg.email}}</p>
+            </div>
+
+            <div class="input-field">
+                <span>Country</span>
+                <select id="" [(ngModel)]="registerObj.country">
+                    <option value="">--SELECT COUNTRY--</option>
+                    <option value="{{item?.name}}" *ngFor="let item of allCountries;">{{item?.name}}</option>
+                </select>
+                <p class="error" *ngIf="errorFlags.register[3]">Country field is required</p>
+            </div>
+
+            <div class="input-field">
+                <span>Password</span>
+                <input type="password" id="pass1" [(ngModel)]="registerObj.password" />
+                <p class="error" *ngIf="errorFlags.register[4]">Password field is required</p>
+            </div>
+
+            <div class="input-field">
+                <span>Repeat Password</span>
+                <input type="password" id="pass2" [(ngModel)]="registerObj.repeatPassword" />
+                <p class="error" *ngIf="errorFlags.register[5]">{{errorMsg.repeatP}}</p>
+            </div>
+        </div>
+
+        <div class="submit mt-3"><button class="btn btn-primary" (click)="onSubmit('register')">Register</button></div>
+    </div>
+
+    <div class="login">
+        <h2>SIGN IN</h2>
+
+        <div class="form-box">
+            <div class="input-field">
+                <span>Email</span>
+                <input type="email" [(ngModel)]="loginObj.username" id="" />
+                <p class="error" *ngIf="errorFlags.login[0]">Email field is required</p>
+            </div>
+
+            <div class="input-field">
+                <span>Password</span>
+                <input type="password" [(ngModel)]="loginObj.password" id="pass3" (keyup)="onEnter($event)" />
+                <p class="error" *ngIf="errorFlags.login[1]">Password field is requied</p>
+            </div>
+        </div>
+        <div class="submit mt-3"><button class="btn btn-primary" (click)="onSubmit('login')">Login</button></div>
+    </div>
+</div>
